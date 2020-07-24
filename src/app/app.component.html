@@ -4,11 +4,36 @@
     padding: 15px;
     border: 2px solid white;
   }
+
+  div {
+    display: flex;
+    justify-content: center;
+    background-color: #eee;
+    margin-bottom: 20px;
+  }
 </style>
 
-<div class="test">
-  <button (click)="login()" > Login </button>
-  <button (click)="logout()"> Logout </button>
+<h1>Base</h1>
+
+<div *ngIf="auth.user$ | async as user; else login" >
+  <pre>
+    {{ user | json }}
+  </pre>
 </div>
 
-<router-outlet *ngIf="token"></router-outlet>
+<button (click)="auth.signOut()"> Logout </button>
+
+<ng-template #login>
+  <button class="button" (click)="auth.googleSignIn()">Login</button>
+</ng-template>
+
+<h1>Angular Router App</h1>
+<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
+<nav>
+  <ul>
+    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="/secret" routerLinkActive="active">Secret</a></li>
+  </ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>

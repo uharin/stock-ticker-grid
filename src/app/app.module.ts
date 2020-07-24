@@ -5,8 +5,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
-import { OAuthModule } from 'angular-oauth2-oidc';
 import { AngularFireModule } from '@angular/fire';
+import { SuperSecretComponent } from './super-secret/super-secret.component';
 
 // This app's Firebase configuration
 
@@ -24,14 +24,14 @@ import { AngularFireModule } from '@angular/fire';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SuperSecretComponent
   ],
   imports: [
-    AngularFireModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     AppRoutingModule,
     BrowserModule,
-    HttpClientModule,
-    OAuthModule.forRoot()
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
