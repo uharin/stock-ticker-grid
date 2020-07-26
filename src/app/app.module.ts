@@ -4,12 +4,29 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
+// custom components
 import { HomeComponent } from './home/home.component';
-import { AngularFireModule } from '@angular/fire';
 import { SuperSecretComponent } from './super-secret/super-secret.component';
 
-// This app's Firebase configuration
+// firebase
+import { AngularFireModule } from '@angular/fire';
 
+// Angular reactive forms
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Angular Material
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
+import { StockSearchFormComponent } from './stock-search-form/stock-search-form.component';
+
+
+// This app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyDUiXlH9RIVyDheVpYFNyxPzRQnHz7fC34",
     authDomain: "stock-ticker-grid.firebaseapp.com",
@@ -25,13 +42,22 @@ import { SuperSecretComponent } from './super-secret/super-secret.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    SuperSecretComponent
+    SuperSecretComponent,
+    StockSearchFormComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
     AppRoutingModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
