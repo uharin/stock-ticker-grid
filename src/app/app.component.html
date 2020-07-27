@@ -46,5 +46,13 @@
   </nav>
   <!-- The routed views render in the <router-outlet>-->
     <router-outlet></router-outlet>
+
+    <button (click)="getPosts()">Get data</button>
+    <div *ngFor="let post of posts | async">
+      {{ post | json }}
+    </div>
+
+    <button (click)="sendErroneousPost()">Create post</button>
+    {{ newPost | async | json }}
 </div>
     

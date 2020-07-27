@@ -11,7 +11,7 @@ import { SuperSecretComponent } from './super-secret/super-secret.component';
 
 // firebase
 import { AngularFireModule } from '@angular/fire';
-
+ 
 // Angular reactive forms
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
