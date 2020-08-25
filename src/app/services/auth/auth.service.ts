@@ -8,7 +8,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { User } from './user.model';
+import { User } from '../../interfaces/user.model';
 
 // Authentication service that can be injected into app.component.ts so that the class can be used throughout the app.
 

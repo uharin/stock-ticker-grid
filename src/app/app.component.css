@@ -1,0 +1,25 @@
+button {
+  background-color: #2a9d8f;
+  padding: 15px;
+  border: 2px solid white;
+  margin-bottom: 25px;
+}
+
+div {
+  background-color: #eee;
+  margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 1em;
+}

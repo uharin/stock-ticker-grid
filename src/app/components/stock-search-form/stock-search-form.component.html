@@ -1,0 +1,12 @@
+<form [formGroup]="stockSearchForm">
+  Value:
+  <pre>{{ stockSearchForm.value }} | json </pre>
+
+    <mat-form-field>
+      <input matInput placeholder="enter stock symbol" type="text" formControlName="stockSymbol">
+      <mat-error *ngIf="stockSymbol.invalid && stockSymbol.touched"> Please enter a valid stock symbol
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="getStock()">Get data</button>
+  </form>

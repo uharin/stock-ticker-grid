@@ -1,30 +1,20 @@
+// =========================================================================================
+// ROOT MODULE - Anything added to app.module 'Imports' array will be available throughout App
+// =========================================================================================
+
+// @angular modules
+import { AngularFireModule } from '@angular/fire';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
+// other imports
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
-// custom components
-import { HomeComponent } from './home/home.component';
-import { SuperSecretComponent } from './super-secret/super-secret.component';
-
-// firebase
-import { AngularFireModule } from '@angular/fire';
- 
-// Angular reactive forms
-import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-// Angular Material
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatChipsModule } from '@angular/material/chips';
-import { StockSearchFormComponent } from './stock-search-form/stock-search-form.component';
-
+import { CoreModule } from './core/core.module';
+import { HomeComponent } from './components/home/home.component';
+import { SharedModule } from './shared/shared.module';
+import { StockDashboardModule } from './components/stock-dashboard/stock-dashboard.module';
 
 // This app's Firebase configuration
   var firebaseConfig = {
@@ -41,25 +31,19 @@ import { StockSearchFormComponent } from './stock-search-form/stock-search-form.
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    SuperSecretComponent,
-    StockSearchFormComponent
+    HomeComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
     AppRoutingModule,
     BrowserModule,
+    CoreModule,
+    FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatChipsModule
+    SharedModule,
+    StockDashboardModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

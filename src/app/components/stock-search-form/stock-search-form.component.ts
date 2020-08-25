@@ -1,27 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { HttpService } from 'src/app/services/http/http.service';
+import { Stock } from '../../interfaces/stock.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-stock-search-form',
   templateUrl: './stock-search-form.component.html',
   styleUrls: ['./stock-search-form.component.css'],
+  providers: []
 })
-export class StockSearchFormComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
 
-  // stockSearchForm: FormGroup;
-  stockSearchFormArray: FormGroup;
+export class StockSearchFormComponent implements OnInit {
+  constructor(private fb: FormBuilder,
+              private http: HttpService) {}
+
+  stockSearchForm: FormGroup;
+  stocks: Array<Stock> = [];
+  // stockSearchFormArray: FormGroup;
 
   ngOnInit(): void {
-    // acts as a model for the an array of stock forms
+    /* acts as a model for the an array of stock forms
+
     this.stockSearchFormArray = this.fb.group({
       stocks: this.fb.array([
         this.createStockForm()
       ]),
-    });
+    });  
+    */
 
+    this.stockSearchForm = this.fb.group({
+      stockSymbol: [
+        '',
+        [ Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(5)
+        ],
+      ]
+    });
+    
     // subscribe to stockSearchForm Observable and update whenever form updates
-    this.stockSearchFormArray.valueChanges.subscribe(console.log);
+    this.stockSearchForm.valueChanges.subscribe(console.log);
   }
 
   // form factory
@@ -29,40 +48,25 @@ export class StockSearchFormComponent implements OnInit {
     let newForm = this.fb.group({
       stockSymbol: [
         '',
-        [
-          Validators.required, 
+        [ Validators.required, 
           Validators.minLength(3), 
           Validators.maxLength(5)
         ],
-      ],
-      companyName: '',
-      shares: '',
+      ]
     });
     return newForm;
   }
 
   // ------------- GETTERS  ------------- //
-
-  // configure getters; should make HTML validation cleaner
-  // gets the array of stock forms from stockSearchForm
-  get stockForms() {
-    return this.stockSearchFormArray.get('stocks') as FormArray;
-  }
   
   get stockSymbol() {
-    console.log(this.stockForms);
-    return this.stockForms.get('stockSymbol');
+    return this.stockSearchForm.get('stockSymbol');
   }
-  get companyName() {
-    return this.stockForms.get('companyName');
-  }
-  get shares() {
-    return this.stockForms.get('shares');
-  }
-  
+
   // ------------- ADD/REMOVE FORMS  ------------- //
   
-  // add a new stock form to stock form array
+  /* add a new stock form to stock form array
+
   addStockForm() {
     const newStockForm = this.createStockForm();
     this.stockForms.push(newStockForm);
@@ -72,5 +76,16 @@ export class StockSearchFormComponent implements OnInit {
   deleteStockForm(index) {
     this.stockForms.removeAt(index);
   }
+  
+  */
+ 
+  getStock() {
+    this.http.get(this.stockSearchForm.controls.stockSymbol.value).subscribe(res => console.log(res));
+  }
+
+  addStock(){
+    
+  }
+
 }
 
