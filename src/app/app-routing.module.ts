@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { StockDashboardComponent } from './components/stock-dashboard/stock-dashboard.component';
+import { StockDashboardComponent } from './stock/stock-dashboard/stock-dashboard.component';
 import { SuperSecretComponent } from './components/super-secret/super-secret.component';
-import { AuthGuard } from './services/auth/auth.guard';
+import { AuthGuard } from './core/auth/auth.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },

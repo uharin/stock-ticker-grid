@@ -3,14 +3,20 @@
 // ================================================
 
 import { NgModule } from '@angular/core';
-import { AuthService } from '../services/auth/auth.service';
-import { HttpService } from '../services/http/http.service';
+import { AuthService } from './auth/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './http/http.service';
 
 
 @NgModule({
+  imports: [
+    HttpClientModule
+  ],
   providers: [
     AuthService,
-    HttpService
+    HttpService,
+    // eventually local storage service, 
+    // eventually Firebase service
   ]
 })
 export class CoreModule { }

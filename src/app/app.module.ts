@@ -1,20 +1,21 @@
+import { Stock } from './shared/models/stock.model';
 // =========================================================================================
 // ROOT MODULE - Anything added to app.module 'Imports' array will be available throughout App
 // =========================================================================================
 
-// @angular modules
+// modules
 import { AngularFireModule } from '@angular/fire';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-// other imports
-import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
+import { StockModule } from './stock/stock.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
+// components
+import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { SharedModule } from './shared/shared.module';
-import { StockDashboardModule } from './components/stock-dashboard/stock-dashboard.module';
+import { StockDashboardComponent } from './stock/stock-dashboard/stock-dashboard.component';
 
 // This app's Firebase configuration
   var firebaseConfig = {
@@ -39,11 +40,9 @@ import { StockDashboardModule } from './components/stock-dashboard/stock-dashboa
     BrowserModule,
     CoreModule,
     FormsModule,
-    HttpClientModule,
     SharedModule,
-    StockDashboardModule
+    StockModule
   ],
-  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of, Subscription } from 'rxjs';
 import { retry, catchError,  map } from 'rxjs/operators';
-import { Stock } from '../../interfaces/stock.model'
+import { Stock } from '../../shared/models/stock.model'
 import { HttpClientModule } from '@angular/common/http';
 
 @Injectable({
@@ -17,15 +17,14 @@ export class HttpService {
 
   public get(symbol: string) {
 
-    /* 
-    Create params object to feed to HttpParams and add to API call 
+    /*  Create params object to feed to HttpParams and add to API call 
     (not necessary with this API as it does not require typical parameter conventions of ?=)
 
-    const paramsObj = {
-      symbol: symbol
-    }
-    let params = new HttpParams({ fromObject: paramsObj });
-    */
+      const paramsObj = {
+        symbol: symbol
+      }
+      
+    let params = new HttpParams({ fromObject: paramsObj }); */
 
     // create headers to add to API call
     let headers = new HttpHeaders({

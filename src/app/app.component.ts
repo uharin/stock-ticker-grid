@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from './services/auth/auth.service';
-import { HttpService } from './services/http/http.service';
-import { Stock } from './interfaces/stock.model'
+import { AuthService } from './core/auth/auth.service';
+import { HttpService } from './core/http/http.service';
+import { Stock } from './shared/models/stock.model'
 
 
 @Component({

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import { HttpService } from 'src/app/services/http/http.service';
-import { Stock } from '../../interfaces/stock.model';
+import { HttpService } from '../../core/http/http.service';
+import { Stock } from '../../shared/models/stock.model';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-stock-search-form',
   templateUrl: './stock-search-form.component.html',
   styleUrls: ['./stock-search-form.component.css'],
-  providers: []
+  providers: [] // does HttpService does not need to go in providers array because it is provided in root
 })
 
 export class StockSearchFormComponent implements OnInit {
