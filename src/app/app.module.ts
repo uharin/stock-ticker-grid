@@ -5,6 +5,7 @@ import { Stock } from './shared/models/stock.model';
 
 // modules
 import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -16,18 +17,8 @@ import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { StockDashboardComponent } from './stock/stock-dashboard/stock-dashboard.component';
+import { environment } from '../environments/environment';
 
-// This app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDUiXlH9RIVyDheVpYFNyxPzRQnHz7fC34",
-    authDomain: "stock-ticker-grid.firebaseapp.com",
-    databaseURL: "https://stock-ticker-grid.firebaseio.com",
-    projectId: "stock-ticker-grid",
-    storageBucket: "stock-ticker-grid.appspot.com",
-    messagingSenderId: "527817637205",
-    appId: "1:527817637205:web:edd213c949e3c42ec783dc",
-    measurementId: "G-GQ13HVSNQV"
-  };
 
 @NgModule({
   declarations: [
@@ -35,7 +26,8 @@ import { StockDashboardComponent } from './stock/stock-dashboard/stock-dashboard
     HomeComponent
   ],
   imports: [
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
     AppRoutingModule,
     BrowserModule,
     CoreModule,

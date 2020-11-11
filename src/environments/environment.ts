@@ -3,7 +3,19 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  // This app's Firebase configuration
+  firebaseConfig: {
+    apiKey: "AIzaSyDUiXlH9RIVyDheVpYFNyxPzRQnHz7fC34",
+    authDomain: "stock-ticker-grid.firebaseapp.com",
+    databaseURL: "https://stock-ticker-grid.firebaseio.com",
+    projectId: "stock-ticker-grid",
+    storageBucket: "stock-ticker-grid.appspot.com",
+    messagingSenderId: "527817637205",
+    appId: "1:527817637205:web:edd213c949e3c42ec783dc",
+    measurementId: "G-GQ13HVSNQV"
+  }
 };
 
 /*

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { HttpService } from '../../core/http/http.service';
 import { Stock } from '../../shared/models/stock.model';
+import { StockService } from '../../stock/stock.service'
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,7 +14,7 @@ import { Observable } from 'rxjs';
 
 export class StockSearchFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
-              private http: HttpService) {}
+              private stockService: StockService) {}
 
   stockSearchForm: FormGroup;
   stocks: Array<Stock> = [];
@@ -80,7 +81,7 @@ export class StockSearchFormComponent implements OnInit {
   */
  
   getStock() {
-    this.http.get(this.stockSearchForm.controls.stockSymbol.value).subscribe(res => console.log(res));
+    this.stockService.getStock(this.stockSearchForm.controls.stockSymbol.value)
   }
 
   addStock(){

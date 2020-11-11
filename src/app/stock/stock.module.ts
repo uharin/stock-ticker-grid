@@ -3,8 +3,6 @@ import { SharedModule } from '../shared/shared.module';
 import { StockCardComponent } from './stock-card/stock-card.component';
 import { StockDashboardComponent } from './stock-dashboard/stock-dashboard.component';
 import { StockSearchFormComponent } from './stock-search-form/stock-search-form.component';
-import { StockService } from './stock.service';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -13,13 +11,12 @@ import { RouterModule } from '@angular/router';
     StockCardComponent
   ],
   imports: [
-    SharedModule,
-    RouterModule
+    SharedModule
   ],
   exports: [
     StockDashboardComponent
   ],
-  providers: [StockService]
+  providers: []
 })
 
 export class StockModule { }

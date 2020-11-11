@@ -3,7 +3,6 @@ import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse } from '@angular
 import { Observable, of, Subscription } from 'rxjs';
 import { retry, catchError,  map } from 'rxjs/operators';
 import { Stock } from '../../shared/models/stock.model'
-import { HttpClientModule } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +16,6 @@ export class HttpService {
 
   public get(symbol: string) {
 
-    /*  Create params object to feed to HttpParams and add to API call 
-    (not necessary with this API as it does not require typical parameter conventions of ?=)
-
-      const paramsObj = {
-        symbol: symbol
-      }
-      
-    let params = new HttpParams({ fromObject: paramsObj }); */
-
     // create headers to add to API call
     let headers = new HttpHeaders({
       'x-rapidapi-host': 'yahoo-finance15.p.rapidapi.com',
@@ -36,13 +26,25 @@ export class HttpService {
     // send GET API request with params and/or headers; returns Observable
     return this.httpClient.get<Stock>(this.API_endpoint + symbol, { headers: headers})
   }
-
-  // handleError(error: HttpResponseError){
-  //   if (error.error instanceof ErrorEvent) {
-  //     console.error('An error has occurred:', error.error.message);
-  //   } else {
-  //     this._error.whichError(error.status, error.message);
-  //     return throwError({error: error.message, status: error.status});
-  //   }
-  // }
 }
+
+
+// -------------- FOR LATER ----------------
+
+/*  Create params object to feed to HttpParams and add to API call 
+(not necessary with this API as it does not require typical parameter conventions of ?=)
+
+  const paramsObj = {
+    symbol: symbol
+  }
+  
+let params = new HttpParams({ fromObject: paramsObj }); */
+
+// handleError(error: HttpResponseError){
+//   if (error.error instanceof ErrorEvent) {
+//     console.error('An error has occurred:', error.error.message);
+//   } else {
+//     this._error.whichError(error.status, error.message);
+//     return throwError({error: error.message, status: error.status});
+//   }
+// }
